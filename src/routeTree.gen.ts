@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ActivitiesRouteImport } from './routes/activities'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 
+const ActivitiesRoute = ActivitiesRouteImport.update({
+  id: '/activities',
+  path: '/activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +37,54 @@ const DemoTableRoute = DemoTableRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/activities': typeof ActivitiesRoute
   '/demo/table': typeof DemoTableRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/activities': typeof ActivitiesRoute
   '/demo/table': typeof DemoTableRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/activities': typeof ActivitiesRoute
   '/demo/table': typeof DemoTableRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/table'
+  fullPaths: '/' | '/about' | '/activities' | '/demo/table'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/table'
-  id: '__root__' | '/' | '/demo/table'
+  to: '/' | '/about' | '/activities' | '/demo/table'
+  id: '__root__' | '/' | '/about' | '/activities' | '/demo/table'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ActivitiesRoute: typeof ActivitiesRoute
   DemoTableRoute: typeof DemoTableRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/activities': {
+      id: '/activities'
+      path: '/activities'
+      fullPath: '/activities'
+      preLoaderRoute: typeof ActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ActivitiesRoute: ActivitiesRoute,
   DemoTableRoute: DemoTableRoute,
 }
 export const routeTree = rootRouteImport
