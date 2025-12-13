@@ -101,7 +101,7 @@ function App() {
         <section className="py-32 bg-gray-900 relative overflow-hidden isolate">
           {/* Background elements */}
           <div className="absolute inset-0 z-0 opacity-20">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary via-gray-900 to-gray-900"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-primary via-gray-900 to-gray-900"></div>
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

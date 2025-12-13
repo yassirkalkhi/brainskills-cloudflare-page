@@ -1,4 +1,4 @@
-import { ChevronRight, PlayCircle, Check, Sparkles, Video } from 'lucide-react'
+import { ChevronRight, Check, Sparkles, Video } from 'lucide-react'
 
 export function Hero() {
     return (
@@ -24,7 +24,7 @@ export function Hero() {
             </h1>
 
             {/* Subheadline */}
-            <p className="font-normal sm:text-lg text-center max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            <p className="font-normal sm:text-lg text-center max-w-2xl mx-auto mb-10 leading-relaxed">
                Une méthode unique à Safi pour développer l'intelligence et la créativité. <br />
                Robotique, Programmation et Calcul Mental.  
             </p>
